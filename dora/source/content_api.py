@@ -9,8 +9,20 @@ class RequestFailure(StandardError):
   def response(self):
     return self._response
 
+def url(slug):
+  if slug.startswith("https://"):
+    return slug
+  else:
+    return "https://www.gov.uk/api/%s.json" % slug
+
 def get(slug):
-  response = requests.get("https://www.gov.uk/api/%s.json" % slug)
+  full_url = url(slug)
+  response = requests.get(full_url)
   if response.status_code != 200:
     raise RequestFailure(response, "Invalid response code")
   return response.json
+
+def artefacts():
+  results = get("artefacts")
+  for artefact in results["results"]:
+    yield get(artefact["id"])
