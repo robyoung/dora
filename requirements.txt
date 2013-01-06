@@ -1,0 +1,10 @@
+PyYAML==3.10
+ipython==0.13.1
+mock==1.0.1
+nltk==2.0.4
+nose==1.2.1
+pymongo==2.4.1
+pyzmq==2.2.0.1
+requests==0.14.2
+tornado==2.4.1
+wsgiref==0.1.2
