@@ -33,6 +33,8 @@ class dora {
     provider => pip,
     require => Package['python-scitools'],
   }
+  package { 'httplib2': ensure => present, provider => pip, }
+  package { 'google-analytics-api-client': ensure => present, provider => pip, }
 
   file { '/etc/init/dora.conf':
     ensure  => present,
