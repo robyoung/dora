@@ -7,6 +7,7 @@ class dora {
   package { 'libpng12-dev': ensure => present, }
   package { 'libzmq-dev': ensure => present, }
   package { 'python-dev': ensure => present, }
+  package { 'curl': ensure => present, }
   
   # installing these with virtualenv causes issues
   # pip continues installing other packages while numpy is still installing.
@@ -34,7 +35,7 @@ class dora {
     require => Package['python-scitools'],
   }
   package { 'httplib2': ensure => present, provider => pip, }
-  package { 'google-analytics-api-client': ensure => present, provider => pip, }
+  package { 'google-api-python-client': ensure => present, provider => pip, }
 
   file { '/etc/init/dora.conf':
     ensure  => present,
