@@ -19,7 +19,7 @@ Notebooks will be saved in the `notebooks` directory.
 2. Run `vagrant up` in the root directory.
 3. Wait...
 4. Wait a little more..
-3. When it's done, navigate to `http://hostname:5555`
+3. When it's done, navigate to [http://localhost:5555](http://localhost:5555)
 
 ### Authenticate
 
