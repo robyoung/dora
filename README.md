@@ -6,24 +6,27 @@ This is an environment and set of tools for exploring data coming out of GDS. It
 around the fantastic [IPython Notebook](http://ipython.org/ipython-doc/dev/interactive/htmlnotebook.html).
 Notebooks will be saved in the `notebooks` directory.
 
-# Installation
+## Installation
 
-## Requirements
+### Requirements
 
-You must have [Python 2.7+](http://www.python.org/) installed along with [virtualenv](http://www.virtualenv.org/en/latest/).
-Note, that to render graphs directly in IPython you must be able to install [PyLab](http://www.scipy.org/PyLab). This can be
-a pain on Mac OS X so it may be easier to run this from inside a Linux virtual machine.
+* [VirtualBox](https://www.virtualbox.org/)
+* [Vagrant](http://www.vagrantup.com/) (install with `gem install vagrant`)
 
-## Setup
+### Setup
 
-Clone this repository.
+1. Clone this repository.
+2. Run `vagrant up` in the root directory.
+3. Wait...
+4. Wait a little more..
+3. When it's done, navigate to `http://hostname:5555`
 
-Run `start-ipython.sh`. The first time you run this it will take a while. It creates a virtual environment, installs the
-requirements and starts IPython.
-
-Navigate to `http://hostname:5555`
-
-## Authenticate
+### Authenticate
 
 There are notebooks created to help you authenticate with various APIs. They all start with 'AUTH', for example 'AUTH Google Analytics'.
 
+## Useful links
+
+* [IPython Notebook](http://ipython.org/ipython-doc/dev/interactive/htmlnotebook.html)
+* [Pandas](http://pandas.pydata.org/) A data analysis library providing structures similar to R.
+* [matplotlib](http://matplotlib.org/) A plottling library that IPython notebook integrates inline.
