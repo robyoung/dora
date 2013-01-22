@@ -1,4 +1,6 @@
 venv
-client_secrets.json
-analytics.dat
+config/auth/*
+!config/auth/.gitkeep
 .vagrant
+*.pyc
+.DS_Store
