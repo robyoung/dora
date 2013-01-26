@@ -1,6 +1,9 @@
 venv
 config/auth/*
 !config/auth/.gitkeep
+data/*
+!data/.gitkeep
 .vagrant
 *.pyc
 .DS_Store
+
