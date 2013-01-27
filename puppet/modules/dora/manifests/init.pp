@@ -1,44 +1,53 @@
 class dora {
-  package { 'git': ensure => present, }
-  package { 'htop': ensure => present, }
-  package { 'vim': ensure => present, }
+  package {[
+    'git',
+    'htop',
+    'vim',
+    'libfreetype6-dev',
+    'libpng12-dev',
+    'libzmq-dev',
+    'python-dev',
+    'curl',
+    'python-pip',
+    'python-scitools',
+  ]:
+    ensure => present
+  }
 
-  package { 'libfreetype6-dev': ensure => present, }
-  package { 'libpng12-dev': ensure => present, }
-  package { 'libzmq-dev': ensure => present, }
-  package { 'python-dev': ensure => present, }
-  package { 'curl': ensure => present, }
-  
+  package {[
+    'tornado',
+    'httplib2',
+    'google-api-python-client',
+  ]:
+    ensure   => present,
+    provider => pip,
+  }
+
   # installing these with virtualenv causes issues
   # pip continues installing other packages while numpy is still installing.
-  package { 'python-pip': ensure => present, }
-  package { 'python-scitools': ensure => latest, }
   package { 'matplotlib':
-    ensure => latest,
+    ensure   => latest,
     provider => pip,
-    require => Package['libfreetype6-dev', 'libpng12-dev', 'python-scitools'],
+    require  => Package['libfreetype6-dev', 'libpng12-dev', 'python-scitools'],
   }
-  package { 'tornado': ensure => present, provider => pip, }
   package { 'pyzmq':
-    ensure => present,
+    ensure   => present,
     provider => pip,
-    require => Package['libzmq-dev', 'python-dev'],
+    require  => Package['libzmq-dev', 'python-dev'],
   }
   package { 'ipython':
-    ensure => latest,
+    ensure   => latest,
     provider => pip,
-    require => Package['tornado', 'pyzmq'],
+    require  => Package['tornado', 'pyzmq'],
   }
   package { 'pandas':
-    ensure => latest,
+    ensure   => latest,
     provider => pip,
-    require => Package['python-scitools'],
+    require  => Package['python-scitools'],
   }
-  package { 'httplib2': ensure => present, provider => pip, }
-  package { 'google-api-python-client': ensure => present, provider => pip, }
 
   file { '/etc/init/dora.conf':
-    ensure  => present,
+    ensure => present,
     source => 'puppet:///modules/dora/dora.conf',
   }
 
@@ -52,8 +61,8 @@ class dora {
   }
 
   service {'dora':
-    ensure => running,
+    ensure   => running,
     provider => 'upstart',
-    require => [File['/etc/init.d/dora'], Package['ipython', 'pandas']] ,
+    require  => [File['/etc/init.d/dora'], Package['ipython', 'pandas']] ,
   }
 }

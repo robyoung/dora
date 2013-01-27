@@ -11,7 +11,7 @@ Notebooks will be saved in the `notebooks` directory.
 ### Requirements
 
 * [VirtualBox](https://www.virtualbox.org/)
-* [Vagrant](http://www.vagrantup.com/) (install with `gem install vagrant`)
+* [Vagrant](http://www.vagrantup.com/) (install with the package for your operating system)
 
 ### Setup
 
