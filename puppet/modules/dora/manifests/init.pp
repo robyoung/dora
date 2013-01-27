@@ -19,35 +19,35 @@ class dora {
     'httplib2',
     'google-api-python-client',
   ]:
-    ensure => present,
+    ensure   => present,
     provider => pip,
   }
 
   # installing these with virtualenv causes issues
   # pip continues installing other packages while numpy is still installing.
   package { 'matplotlib':
-    ensure => latest,
+    ensure   => latest,
     provider => pip,
-    require => Package['libfreetype6-dev', 'libpng12-dev', 'python-scitools'],
+    require  => Package['libfreetype6-dev', 'libpng12-dev', 'python-scitools'],
   }
   package { 'pyzmq':
-    ensure => present,
+    ensure   => present,
     provider => pip,
-    require => Package['libzmq-dev', 'python-dev'],
+    require  => Package['libzmq-dev', 'python-dev'],
   }
   package { 'ipython':
-    ensure => latest,
+    ensure   => latest,
     provider => pip,
-    require => Package['tornado', 'pyzmq'],
+    require  => Package['tornado', 'pyzmq'],
   }
   package { 'pandas':
-    ensure => latest,
+    ensure   => latest,
     provider => pip,
-    require => Package['python-scitools'],
+    require  => Package['python-scitools'],
   }
 
   file { '/etc/init/dora.conf':
-    ensure  => present,
+    ensure => present,
     source => 'puppet:///modules/dora/dora.conf',
   }
 
@@ -61,8 +61,8 @@ class dora {
   }
 
   service {'dora':
-    ensure => running,
+    ensure   => running,
     provider => 'upstart',
-    require => [File['/etc/init.d/dora'], Package['ipython', 'pandas']] ,
+    require  => [File['/etc/init.d/dora'], Package['ipython', 'pandas']] ,
   }
 }
