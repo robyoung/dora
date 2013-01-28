@@ -3,6 +3,7 @@ config/auth/*
 !config/auth/.gitkeep
 data/*
 !data/.gitkeep
+!.gitkeep
 .vagrant
 *.pyc
 .DS_Store
