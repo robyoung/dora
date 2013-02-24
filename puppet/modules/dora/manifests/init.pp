@@ -18,6 +18,7 @@ class dora {
     'tornado',
     'httplib2',
     'google-api-python-client',
+    'jinja2',
   ]:
     ensure   => present,
     provider => pip,
@@ -38,6 +39,7 @@ class dora {
   package { 'ipython':
     ensure   => latest,
     provider => pip,
+    source   => 'git+git://github.com/robyoung/ipython.git',
     require  => Package['tornado', 'pyzmq'],
   }
   package { 'pandas':
