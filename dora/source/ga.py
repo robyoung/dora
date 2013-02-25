@@ -1,9 +1,10 @@
 import os
-from dora import auth
+from pandas.io.ga import read_ga as pandas_read_ga
+from dora import source
 
 
-SECRETS=os.path.join(auth.AUTH_PATH, "client_secrets.json")
-TOKEN_FILE_NAME=os.path.join(auth.AUTH_PATH, "analytics.dat")
+SECRETS=os.path.join(source.AUTH_PATH, "client_secrets.json")
+TOKEN_FILE_NAME=os.path.join(source.AUTH_PATH, "analytics.dat")
 
 
 def authenticate():
@@ -62,3 +63,13 @@ def authenticate():
   credentials = flow.step2_exchange(code)
   storage.put(credentials)
 
+def read_ga(metrics, dimensions, start_date, **kwargs):
+    """
+    Wrapper for pandas.io.ga.read_ga that set the secrets and token file
+    """
+    if 'secrets' not in kwargs:
+        kwargs['secrets'] = SECRETS
+    if 'token_file_name' not in kwargs:
+        kwargs['token_file_name'] = TOKEN_FILE_NAME
+
+    return pandas_read_ga(metrics, dimensions, start_date, **kwargs)

@@ -1,9 +1,9 @@
 import os
 import json
 
-from dora import auth
+from dora import source
 
-CREDENTIALS_FILE = os.path.join(auth.AUTH_PATH, "zendesk.json")
+CREDENTIALS_FILE = os.path.join(source.AUTH_PATH, "zendesk.json")
 
 
 def authenticate(username, password):
