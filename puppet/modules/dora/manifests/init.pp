@@ -39,7 +39,7 @@ class dora {
   package { 'ipython':
     ensure   => latest,
     provider => pip,
-    source   => 'git+git://github.com/robyoung/ipython.git',
+    source   => 'git+git://github.com/robyoung/ipython.git@hierarchical-notebook-listing',
     require  => Package['tornado', 'pyzmq'],
   }
   package { 'pandas':
