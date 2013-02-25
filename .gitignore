@@ -7,4 +7,4 @@ data/*
 .vagrant
 *.pyc
 .DS_Store
-
+puppet/manifests/src
