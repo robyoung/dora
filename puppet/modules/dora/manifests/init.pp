@@ -19,6 +19,7 @@ class dora {
     'httplib2',
     'google-api-python-client',
     'jinja2',
+    'requests',
   ]:
     ensure   => present,
     provider => pip,
